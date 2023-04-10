@@ -1,0 +1,65 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 1,
+    "applicationType": "microservice",
+    "authenticationType": "jwt",
+    "baseName": "shopService",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "3.4.0"
+      }
+    ],
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "no",
+    "clientPackageManager": "npm",
+    "creationTimestamp": 1679297776674,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "dtoSuffix": "DTO",
+    "enableGradleEnterprise": false,
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": true,
+    "enableTranslation": true,
+    "entities": ["Item", "Shop"],
+    "entitySuffix": "",
+    "gradleEnterpriseHost": "",
+    "incrementalChangelog": true,
+    "jhiPrefix": "shop",
+    "jhipsterVersion": "7.9.3",
+    "jwtSecretKey": "OTNhOWJlNzRkMjg5YzM0NDI2NTYyZTc3ZTY5YTBhOWU0NDkyNGQ4MWU4YTBiZmU4NGQ2YmE0ZTBhYzQ4ZDQ0OTMyODBiNjU1OGQyNjVlOTVjOWY0ZTZiNTk3NzIxZWU0NTY5MjYwYTcwMDgyMDllY2I1OWU0MzNiNGFiYzQ4Mjc=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1679297896000,
+    "messageBroker": false,
+    "microfrontend": false,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "3.4.0"
+      }
+    ],
+    "packageFolder": "com/shopapp",
+    "packageName": "com.shopapp",
+    "pages": [],
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "searchEngine": false,
+    "serverPort": "8081",
+    "serviceDiscoveryType": "eureka",
+    "skipCheckLengthOfIdentifier": false,
+    "skipClient": true,
+    "skipCommitHook": true,
+    "skipFakeData": false,
+    "skipUserManagement": true,
+    "testFrameworks": [],
+    "websocket": false,
+    "withAdminUi": false
+  },
+  "generator-jhipster-entity-audit": {
+    "auditFramework": "javers",
+    "auditPage": true
+  }
+}

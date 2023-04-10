@@ -1,0 +1,18 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+    - image: 140397/orderservice
+      context: ../orderService
+      jib: {}
+    - image: docker push 140397/shopservice
+      context: ../shopService
+      jib: {}
+    - image: docker push 140397/gateway
+      context: ../gateway
+      jib: {}
+  tagPolicy:
+    envTemplate:
+      template: "{{.IMAGE_NAME}}:latest"
+deploy:
+  kustomize: {}

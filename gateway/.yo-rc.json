@@ -1,0 +1,67 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "gateway",
+    "authenticationType": "jwt",
+    "baseName": "gateway",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "3.4.0"
+      }
+    ],
+    "buildTool": "maven",
+    "cacheProvider": "no",
+    "clientFramework": "angularX",
+    "clientPackageManager": "npm",
+    "clientTheme": "cyborg",
+    "clientThemeVariant": "dark",
+    "creationTimestamp": 1679297776631,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "devServerPort": 4200,
+    "dtoSuffix": "DTO",
+    "enableGradleEnterprise": false,
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": true,
+    "enableTranslation": true,
+    "entities": ["ExtraUser"],
+    "entitySuffix": "",
+    "gradleEnterpriseHost": "",
+    "incrementalChangelog": true,
+    "jhiPrefix": "shop",
+    "jhipsterVersion": "7.9.3",
+    "jwtSecretKey": "OTE3OGZjMjhmMDMwM2I3MmE2ZjVhMDVhM2M1MGU1ZjI5MDUzNGMwOTdmMTYxNzBlZjZlZmFiNWY0MGQ1NjU0N2ZmZjU2YmE0NzMxODFkZDY0MTY4MWU2NmNmNDZiMTRkNmI3M2E2NWYzOTEwNjNjZTI2OTZmYjkxNGM1OWI0MzY=",
+    "languages": ["en", "vi"],
+    "lastLiquibaseTimestamp": 1679297836000,
+    "messageBroker": false,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "3.4.0"
+      }
+    ],
+    "packageFolder": "com/shopapp",
+    "packageName": "com.shopapp",
+    "pages": [],
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "searchEngine": false,
+    "serverPort": "8080",
+    "serviceDiscoveryType": "eureka",
+    "skipCheckLengthOfIdentifier": false,
+    "skipClient": false,
+    "skipCommitHook": true,
+    "skipFakeData": false,
+    "skipUserManagement": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "withAdminUi": true
+  },
+  "generator-jhipster-entity-audit": {
+    "auditFramework": "javers",
+    "auditPage": true
+  }
+}

@@ -1,0 +1,51 @@
+<div>
+  <h2>
+    <span id="metrics-page-heading" shopTranslate="metrics.title" data-cy="metricsPageHeading">Application Metrics</span>
+
+    <button class="btn btn-primary float-end" (click)="refresh()">
+      <fa-icon icon="sync"></fa-icon> <span shopTranslate="metrics.refresh.button">Refresh</span>
+    </button>
+  </h2>
+
+  <h3 shopTranslate="metrics.jvm.title">JVM Metrics</h3>
+
+  <div class="row" *ngIf="metrics && !updatingMetrics">
+    <shop-jvm-memory class="col-md-4" [updating]="updatingMetrics" [jvmMemoryMetrics]="metrics.jvm"></shop-jvm-memory>
+
+    <shop-jvm-threads class="col-md-4" [threads]="threads"></shop-jvm-threads>
+
+    <shop-metrics-system class="col-md-4" [updating]="updatingMetrics" [systemMetrics]="metrics.processMetrics"></shop-metrics-system>
+  </div>
+
+  <shop-metrics-garbagecollector
+    *ngIf="metrics && metricsKeyExists('garbageCollector')"
+    [updating]="updatingMetrics"
+    [garbageCollectorMetrics]="metrics.garbageCollector"
+  ></shop-metrics-garbagecollector>
+
+  <div class="well well-lg" *ngIf="updatingMetrics" shopTranslate="metrics.updating">Updating...</div>
+
+  <shop-metrics-request
+    *ngIf="metrics && metricsKeyExists('http.server.requests')"
+    [updating]="updatingMetrics"
+    [requestMetrics]="metrics['http.server.requests']"
+  ></shop-metrics-request>
+
+  <shop-metrics-endpoints-requests
+    *ngIf="metrics && metricsKeyExists('services')"
+    [updating]="updatingMetrics"
+    [endpointsRequestsMetrics]="metrics.services"
+  ></shop-metrics-endpoints-requests>
+
+  <shop-metrics-cache
+    *ngIf="metrics && metricsKeyExists('cache')"
+    [updating]="updatingMetrics"
+    [cacheMetrics]="metrics.cache"
+  ></shop-metrics-cache>
+
+  <shop-metrics-datasource
+    *ngIf="metrics && metricsKeyExistsAndObjectNotEmpty('databases')"
+    [updating]="updatingMetrics"
+    [datasourceMetrics]="metrics.databases"
+  ></shop-metrics-datasource>
+</div>

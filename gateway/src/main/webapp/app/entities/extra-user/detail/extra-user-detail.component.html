@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="extraUser">
+      <h2 data-cy="extraUserDetailsHeading"><span shopTranslate="gatewayApp.extraUser.detail.title">Extra User</span></h2>
+
+      <hr />
+
+      <shop-alert-error></shop-alert-error>
+
+      <shop-alert></shop-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span shopTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ extraUser.id }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.shopId">Shop Id</span></dt>
+        <dd>
+          <span>{{ extraUser.shopId }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.fullName">Full Name</span></dt>
+        <dd>
+          <span>{{ extraUser.fullName }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.phone">Phone</span></dt>
+        <dd>
+          <span>{{ extraUser.phone }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.address">Address</span></dt>
+        <dd>
+          <span>{{ extraUser.address }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.point">Point</span></dt>
+        <dd>
+          <span>{{ extraUser.point }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ extraUser.createdBy }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ extraUser.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ extraUser.lastModifiedBy }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ extraUser.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span shopTranslate="gatewayApp.extraUser.internalUser">Internal User</span></dt>
+        <dd>
+          <span>{{ extraUser.internalUser?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span shopTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/extra-user', extraUser.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span shopTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

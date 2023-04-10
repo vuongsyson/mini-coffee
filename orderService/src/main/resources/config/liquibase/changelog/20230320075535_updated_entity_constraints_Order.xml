@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!--
+        Added the field constraints for entity Order.
+    -->
+    <changeSet id="20230320075535-fields-constraints" author="jhipster">
+        <addNotNullConstraint tableName="shop_order"
+            columnName="created_by"
+            columnDataType="varchar(50)"/>
+        <addNotNullConstraint tableName="shop_order"
+            columnName="created_date"
+            columnDataType="${datetimeType}"/>
+        <addNotNullConstraint tableName="shop_order"
+            columnName="last_modified_by"
+            columnDataType="varchar(50)"/>
+        <addNotNullConstraint tableName="shop_order"
+            columnName="last_modified_date"
+            columnDataType="${datetimeType}"/>
+    </changeSet>
+</databaseChangeLog>

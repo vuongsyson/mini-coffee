@@ -1,0 +1,112 @@
+// jhipster jdl project.jdl --force --blueprints entity-audit --incremental-changelog --enable-swagger-codegen --skip-install
+application {
+  config {
+    baseName gateway
+    applicationType gateway
+    packageName com.shopapp
+    authenticationType jwt
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    clientThemeVariant dark
+    jhiPrefix shop
+    clientTheme cyborg
+    entitySuffix false
+    languages [en, vi]
+    nativeLanguage en
+  }
+  entities ExtraUser
+}
+
+application {
+  config {
+    baseName shopService
+    applicationType microservice
+    packageName com.shopapp
+    authenticationType jwt
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    jhiPrefix shop
+  }
+  entities Shop, Item
+  dto * with mapstruct
+  paginate * with pagination
+  service * with serviceImpl
+}
+
+application {
+  config {
+    baseName orderService
+    applicationType microservice
+    packageName com.shopapp
+    authenticationType jwt
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    jhiPrefix shop
+  }
+  entities Order, OrderItem, Queue
+  dto * with mapstruct
+  paginate * with pagination
+  service * with serviceImpl
+}
+
+entity ExtraUser {
+  shopId Long
+  fullName String required
+  phone String required
+  address String required
+  point Long
+}
+
+entity Shop {
+  code String required
+  phone String
+  address String required
+  longitude Double required
+  latitude Double required
+  openTime ZonedDateTime required
+  closeTime ZonedDateTime required
+  queueAvailable Integer required
+  active Boolean required
+}
+
+entity Item {
+  code String required
+  name String required
+  price BigDecimal required
+  prepareTime Duration
+  active Boolean required
+}
+
+entity Order {
+  shopId Long required
+  CustomerId Long required
+  code String required
+  finishTime ZonedDateTime required
+  subTotal BigDecimal required
+  tax BigDecimal required
+  grandTotal BigDecimal required
+  active Boolean required
+}
+
+entity OrderItem {
+  code String required
+  name String required
+  unitPrice BigDecimal required
+  quantity Integer required
+  totalPrice BigDecimal required
+}
+
+entity Queue {
+  shopId Long required
+  code String
+  active Boolean required
+}
+
+relationship OneToOne {
+  ExtraUser{internalUser} to User{extraUser}
+}
+
+relationship OneToMany {
+  Shop{items} to Item{shop}
+  Order{orderItem} to OrderItem{order}
+}

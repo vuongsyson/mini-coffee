@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "batteryService",
+      "bssService",
+      "gateway",
+      "supportService",
+      "swapService",
+      "vehicleService"
+    ],
+    "clusteredDbApps": {},
+    "directoryPath": "../",
+    "dockerPushCommand": "docker push",
+    "dockerRepositoryName": "099919086460.dkr.ecr.ap-southeast-1.amazonaws.com",
+    "ingressDomain": "",
+    "istio": false,
+    "jwtSecretKey": "OTQyYzQzN2JmOTI2YTc3NDg5NWNkMDNjZDBjMTQ5MzhmNDYwMGI2YzdmOTk5YTExNDhlZGViZDgyNTc5MmI0NTA1ZWZiNWE0MzU5NGZhZTIzMzBhZTE0ZTkyOTdhNjNmMWZlZjg4ZGQ4MTlmYjUzYmNjNmQ1NmI0Yzg2OWVlZTk=",
+    "kubernetesNamespace": "coffee",
+    "kubernetesServiceType": "LoadBalancer",
+    "kubernetesUseDynamicStorage": false,
+    "monitoring": "prometheus",
+    "serviceDiscoveryType": "eureka"
+  }
+}

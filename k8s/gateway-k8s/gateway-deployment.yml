@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: coffee
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway
+      version: "v1"
+  template:
+    metadata:
+      labels:
+        app: gateway
+        version: "v1"
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - gateway
+                topologyKey: kubernetes.io/hostname
+              weight: 100
+      containers:
+        - name: gateway-app
+          image: 140397/gateway
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod,api-docs
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: http://admin:${jhipster.registry.password}@jhipster-registry.coffee.svc.cluster.local:8761/config
+            - name: JHIPSTER_REGISTRY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: registry-secret
+                  key: registry-admin-password
+            - name: EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE
+              value: http://admin:${jhipster.registry.password}@jhipster-registry.coffee.svc.cluster.local:8761/eureka/
+            - name: MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED
+              value: "true"
+            - name: SPRING_SLEUTH_PROPAGATION_KEYS
+              value: "x-request-id,x-ot-span-context"
+            - name: JAVA_OPTS
+              value: " -Xmx256m -Xms256m"
+            - name: SERVER_SHUTDOWN
+              value: graceful
+            - name: POSTGRES_DB
+              value: gateway
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: 123456
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: postgres
+              containerPort: 5432
+          readinessProbe:
+            httpGet:
+              path: /management/health/readiness
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 15
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /management/health/liveness
+              port: http
+            initialDelaySeconds: 120

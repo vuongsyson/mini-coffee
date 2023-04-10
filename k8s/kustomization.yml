@@ -1,0 +1,18 @@
+commonLabels:
+  app.kubernetes.io/genereted-by: SonVSH
+
+namespace: coffee
+
+resources:
+  - namespace.yml
+  # Individual apps
+  - batteryservice-k8s/shopservice-deployment.yml
+  - batteryservice-k8s/shopservice-service.yml
+  - bssservice-k8s/orderservice-deployment.yml
+  - bssservice-k8s/orderservice-service.yml
+  - gateway-k8s/gateway-deployment.yml
+  - gateway-k8s/gateway-service.yml
+  - registry-k8s/jhipster-registry.yml
+  - registry-k8s/application-configmap.yml
+
+patchesJson6902:
