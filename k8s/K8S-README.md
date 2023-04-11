@@ -18,33 +18,35 @@ $ docker push 140397/shopservice
 docker login --username vuonghaison2@gmail.com --password .gpajtdm9 \
 && ./mvnw clean \
 &&./mvnw -ntp verify -DskipTests -Pprod,api-docs jib:dockerBuild \
-&& docker image tag orderservice 140397/orderservice:lastest \
-&& docker push 140397/orderservice:lastest \
-&& kubectl -n coffee set image deployments/orderservice orderservice-app=140397/orderservice:lastest \
+&& docker image tag orderservice 140397/orderservice:latest \
+&& docker push 140397/orderservice:latest \
+&& kubectl -n coffee set image deployments/orderservice orderservice-app=140397/orderservice:latest \
 && sleep 5 \
 && kubectl logs -f -n coffee -l app=orderservice
 ```
+
 ```shell
-aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 099919086460.dkr.ecr.ap-southeast-1.amazonaws.com \
+docker login --username vuonghaison2@gmail.com --password .gpajtdm9 \
 && ./mvnw clean \
 &&./mvnw -ntp verify -DskipTests -Pprod,api-docs jib:dockerBuild \
-&& docker image tag shopservice 099919086460.dkr.ecr.ap-southeast-1.amazonaws.com/shopservice \
-&& docker push 099919086460.dkr.ecr.ap-southeast-1.amazonaws.com/shopservice \
-&& kubectl -n coffee set image deployments/shopservice shopservice-app=099919086460.dkr.ecr.ap-southeast-1.amazonaws.com/shopservice:latest \
+&& docker image tag shopservice 140397/shopservice:latest \
+&& docker push 140397/shopservice:latest \
+&& kubectl -n coffee set image deployments/shopservice shopservice-app=140397/shopservice:latest \
 && sleep 5 \
 && kubectl logs -f -n coffee -l app=shopservice
 ```
 
 ```shell
-aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 099919086460.dkr.ecr.ap-southeast-1.amazonaws.com \
+docker login --username vuonghaison2@gmail.com --password .gpajtdm9 \
 && ./mvnw clean \
-&& ./npmw run webapp:build:dev \
 &&./mvnw -ntp verify -DskipTests -Pprod,api-docs jib:dockerBuild \
-&& docker image tag gateway 099919086460.dkr.ecr.ap-southeast-1.amazonaws.com/gateway:pre-releases11252022-1 \
-&& docker push 099919086460.dkr.ecr.ap-southeast-1.amazonaws.com/gateway:pre-releases11252022-1 \
-&& kubectl -n coffee set image deployments/gateway gateway-app=099919086460.dkr.ecr.ap-southeast-1.amazonaws.com/gateway:pre-releases11252022-1 \
+&& docker image tag gateway 140397/gateway:latest \
+&& docker push 140397/gateway:latest \
+&& kubectl -n coffee set image deployments/gateway gateway-app=140397/gateway:latest \
 && sleep 5 \
 && kubectl logs -f -n coffee -l app=gateway
+```
+
 ```
 
 
